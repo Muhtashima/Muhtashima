@@ -1,34 +1,45 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
+import 'package:sec_pro/Models/Board.dart';
+
+
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(
-        title: Text('This is a Sample App'),
+        appBar: AppBar(
+        elevation: 5.0,
+        title: Text('Let\'s play Tic-Tac-toe'),
         centerTitle: true,
-        backgroundColor: Colors.tealAccent,
-        leading: Container(
-          margin: EdgeInsets.all(4.0),
-          child: SvgPicture.asset('assets/icons/left-arrows-svgrepo-com.svg'),
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            image: ,
-            borderRadius: BorderRadius.circular(20.0)
+        backgroundColor: Colors.white54,
+      ),
+      body: Center(
+        child: IntrinsicWidth(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: (){
+                 Navigator.pushNamed(context, '/board');
+                 Board().resetBoard();
+                 print('This button will redirect you to game page');
+              }, child: Text('New Game')),
+              ElevatedButton(onPressed: (){
+                Navigator.pushNamed(context, '/achievements');
+                print('This will take you the achievements board');
+              }, child: Text('Achievements')),
+              ElevatedButton(onPressed: (){
+                SystemNavigator.pop();
+                print('This will exit the app');
+              }, child: Text('Quit')),
+
+            ],
           ),
         ),
-      ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text('Sample Text 1'),
-          Text('Sample Text 2'),
-          Text('Sample Text 3')
-
-        ],
       )
     );
   }

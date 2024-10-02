@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sec_pro/Pages/HomePage.dart';
+import 'package:sec_pro/Pages/TicTacToe.dart';
+
 
 void main(){
-  runApp(MyApp());
+  runApp(const MyApp());
 
 }
 class MyApp extends StatelessWidget {
@@ -11,11 +13,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Poppins'),
+      routes: {
+        '/home': (context){return HomePage();},
+        '/board':(context){return Tictactoe();},
+        '/achievements':(context){return ProfilePage();},
+      },
+      theme: ThemeData(brightness: Brightness.light),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar(backgroundColor: Colors.white54,),);
+  }
+}
+
+
 
 
